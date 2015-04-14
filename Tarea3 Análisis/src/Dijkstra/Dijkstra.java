@@ -1,6 +1,7 @@
 package Dijkstra;
 
-import java.util.ArrayList;
+import java.util.*;
+
 
 /*
  * 
@@ -23,6 +24,7 @@ static final int V  = 9;
 public static ArrayList<Integer> arreglo = new ArrayList<Integer>();
 public static ArrayList<Integer> arreglo_aux = new ArrayList<Integer>();
 static int nodoBuscar = 0;
+public static Hashtable <Integer, Integer> nodos = new Hashtable<Integer, Integer>();
 
 
 // Funcion utilitaria para encontrar el vertice con la distancia minima, 
@@ -104,23 +106,26 @@ private static void dijkstra(int[][] grafo, int src){
          if (!verticeYaProcesado[v] && grafo[u][v] > 0 && dist[u] != Integer.MAX_VALUE && dist[u]+grafo[u][v] < dist[v]){
             dist[v] = dist[u] + grafo[u][v];
             
-             arreglo_aux.add(u);
-             arreglo_aux.add(v);
-             
+             nodos.put(v,u);
          	}
          
          }
        
      }
-     System.out.println(arreglo_aux);
+     System.out.println(nodos);
      
      nodoBuscar = 8; // Se le asigna a nodoBuscar el nodo que se quiere la ruta más corta
-     				// En este caso es el 8 ya que es el último.
-     while(nodoBuscar != 0){
-    	 
-     }
+     				// En este caso es el 8 ya que es el último nodo.
+     System.out.println(nodos.get(nodoBuscar));
      
-
+     while(nodoBuscar != 0){
+    	    int nodo_final = nodos.get(nodoBuscar); //Obtiene la última concurrencia del nodo
+    	    												 //ya al ser el último es el que tiene menor costo.
+    	    arreglo.add(nodoBuscar);
+    	    nodoBuscar = nodo_final;
+    
+     }
+     System.out.println(arreglo);
      //printSolution(dist, V);
 }
 
