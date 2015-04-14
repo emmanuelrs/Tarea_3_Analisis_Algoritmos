@@ -22,6 +22,8 @@ public class Dijkstra {
 static final int V  = 9;
 public static ArrayList<Integer> arreglo = new ArrayList<Integer>();
 public static ArrayList<Integer> arreglo_aux = new ArrayList<Integer>();
+static int nodoBuscar = 0;
+
 
 // Funcion utilitaria para encontrar el vertice con la distancia minima, 
 // a partir del conjunto de los vertices todavia no incluidos en el 
@@ -45,12 +47,17 @@ private static int minDistance(int[] dist, boolean[] verticeYaProcesado){
  
 // Funcion utilitaria para imprimir el arreglo de distancias calculadas
 
+// Se comenta la función de imprimir la solución
+// Porque solo se debe imprimir el camino más corto.
+
+/*
 private static void printSolution(int[] dist, int n){
    System.out.println("Distancia del vertice desde el origen\n");
    for (int i = 0; i < V; i++)
       System.out.println(i + " \t\t " + dist[i]);
 }
- 
+ */
+
 private static void dijkstra(int[][] grafo, int src){
      int[] dist = new int[V];     
      
@@ -106,10 +113,15 @@ private static void dijkstra(int[][] grafo, int src){
        
      }
      System.out.println(arreglo_aux);
-     //System.out.println(arreglo);
-     // se imprime el arreglo con las distancias
-     //System.out.println(dist[8]);
-     printSolution(dist, V);
+     
+     nodoBuscar = 8; // Se le asigna a nodoBuscar el nodo que se quiere la ruta más corta
+     				// En este caso es el 8 ya que es el último.
+     while(nodoBuscar != 0){
+    	 
+     }
+     
+
+     //printSolution(dist, V);
 }
 
 // driver program to test above function
