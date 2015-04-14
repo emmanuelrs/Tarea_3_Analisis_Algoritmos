@@ -21,6 +21,7 @@ public class Dijkstra {
 	
 static final int V  = 9;
 public static ArrayList<Integer> arreglo = new ArrayList<Integer>();
+public static ArrayList<Integer> arreglo_aux = new ArrayList<Integer>();
 
 // Funcion utilitaria para encontrar el vertice con la distancia minima, 
 // a partir del conjunto de los vertices todavia no incluidos en el 
@@ -96,16 +97,15 @@ private static void dijkstra(int[][] grafo, int src){
          if (!verticeYaProcesado[v] && grafo[u][v] > 0 && dist[u] != Integer.MAX_VALUE && dist[u]+grafo[u][v] < dist[v]){
             dist[v] = dist[u] + grafo[u][v];
             
-             System.out.println(v);
-             System.out.println(u);
-             System.out.println("----------");
-             arreglo.add(u);
-             arreglo.add(v);
+             arreglo_aux.add(u);
+             arreglo_aux.add(v);
              
          	}
+         
          }
+       
      }
-     System.out.println(arreglo);
+     System.out.println(arreglo_aux);
      //System.out.println(arreglo);
      // se imprime el arreglo con las distancias
      //System.out.println(dist[8]);
