@@ -22,7 +22,6 @@ public class Dijkstra {
 	
 static final int V  = 9;
 public static ArrayList<Integer> arreglo = new ArrayList<Integer>();
-public static ArrayList<Integer> arreglo_aux = new ArrayList<Integer>();
 static int nodoBuscar = 0;
 public static Hashtable <Integer, Integer> nodos = new Hashtable<Integer, Integer>();
 
@@ -106,7 +105,7 @@ private static void dijkstra(int[][] grafo, int src){
          if (!verticeYaProcesado[v] && grafo[u][v] > 0 && dist[u] != Integer.MAX_VALUE && dist[u]+grafo[u][v] < dist[v]){
             dist[v] = dist[u] + grafo[u][v];
             
-             nodos.put(v,u);
+             nodos.put(v,u); // Hash Table donde se guardan los nodos con su antecesor de menor costo
          	}
          
          }
@@ -115,16 +114,18 @@ private static void dijkstra(int[][] grafo, int src){
      System.out.println(nodos);
      
      nodoBuscar = 8; // Se le asigna a nodoBuscar el nodo que se quiere la ruta más corta
-     				// En este caso es el 8 ya que es el último nodo.
-     System.out.println(nodos.get(nodoBuscar));
+     				// En este caso es el 8 ya que es el último nodo, es decir, indica el nodo a buscar
+
      
      while(nodoBuscar != 0){
-    	    int nodo_final = nodos.get(nodoBuscar); //Obtiene la última concurrencia del nodo
-    	    												 //ya al ser el último es el que tiene menor costo.
-    	    arreglo.add(nodoBuscar);
-    	    nodoBuscar = nodo_final;
+    	    int nodo_final = nodos.get(nodoBuscar); //--> nodo_final va hacer el antecesor del final
+    	    									   
+    	    arreglo.add(nodoBuscar);      // --> se agrega a la lista el nodo por donde pasa la ruta más corta
+    	    nodoBuscar = nodo_final;     // ---> Se actualiza el nodoBuscar para buscar el antecesor del antecesor del nodo final
     
      }
+     arreglo.add(0);                    // --> Se agrega el nodo de partida 0
+     Collections.reverse(arreglo);      // --> Se invierte la lista para mostrar el camino desde el nodo inicial al final
      System.out.println(arreglo);
      //printSolution(dist, V);
 }
