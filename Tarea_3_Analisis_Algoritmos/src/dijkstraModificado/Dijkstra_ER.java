@@ -104,8 +104,7 @@ public class Dijkstra_ER {
 	         }
 	       
 	     }
-	     System.out.println(nodos);
-	     
+	   
 	     nodoBuscar = 8; // Se le asigna a nodoBuscar el nodo que se quiere la ruta más corta
 	     				// En este caso es el 8 ya que es el último nodo, es decir, indica el nodo a buscar
 
@@ -120,8 +119,9 @@ public class Dijkstra_ER {
 	     arreglo.add(0);                    // --> Se agrega el nodo de partida 0
 	     Collections.reverse(arreglo);      // --> Se invierte la lista para mostrar el camino desde el nodo inicial al final
 	     
-	     System.out.println("La Ruta más corta para llegar es: ");
-	     System.out.println(arreglo);
+	     System.out.println("");
+	     System.out.println("La Ruta más corta para llegar es --> " + arreglo);
+	     
 	     //printSolution(dist, V);
 	}
 
